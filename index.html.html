@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ScanMet | Product Compliance</title>
+
+<style>
+
+/* ================= RESET ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f8f6;
+    color: #17324d;
+}
+
+
+/* ================= HEADER ================= */
+
+header {
+    height: 76px;
+    background: #ffffff;
+    border-bottom: 1px solid #d8e5e0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.brand-name {
+    font-size: 25px;
+    font-weight: 800;
+    color: #0b2945;
+}
+
+.brand-name span {
+    color: #0a9b63;
+}
+
+
+/* ================= RIGHT HEADER ================= */
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.header-status {
+    background: #e8f7f0;
+    color: #08784e;
+
+    padding: 8px 14px;
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+/* THREE DOT BUTTON */
+
+.menu-container {
+    position: relative;
+}
+
+.menu-btn {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid #d6e3df;
+    background: white;
+
+    border-radius: 10px;
+
+    font-size: 23px;
+    color: #17324d;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.menu-btn:hover {
+    background: #f0f8f5;
+    border-color: #0a9b63;
+}
+
+
+/* DROPDOWN */
+
+.dropdown {
+    display: none;
+
+    position: absolute;
+    right: 0;
+    top: 52px;
+
+    width: 245px;
+
+    background: white;
+
+    border: 1px solid #d7e4df;
+
+    border-radius: 14px;
+
+    box-shadow: 0 15px 35px rgba(15, 45, 65, 0.15);
+
+    overflow: hidden;
+}
+
+.dropdown.show {
+    display: block;
+}
+
+.dropdown-title {
+    padding: 15px 17px 10px;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    color: #71818d;
+
+    text-transform: uppercase;
+}
+
+.dropdown a {
+    display: block;
+
+    padding: 13px 17px;
+
+    text-decoration: none;
+
+    color: #17324d;
+
+    font-size: 13px;
+
+    border-top: 1px solid #edf2f0;
+}
+
+.dropdown a:hover {
+    background: #f1f9f6;
+    color: #08784e;
+}
+
+.contact-item {
+    padding: 12px 17px;
+
+    font-size: 12px;
+
+    color: #5e7180;
+
+    border-top: 1px solid #edf2f0;
+
+    line-height: 1.6;
+}
+
+.contact-item strong {
+    color: #17324d;
+}
+
+
+/* ================= MAIN ================= */
+
+.container {
+    max-width: 1180px;
+
+    margin: auto;
+
+    padding: 45px 25px;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 40px;
+
+    margin-bottom: 38px;
+}
+
+.hero-text {
+    max-width: 680px;
+}
+
+.tag {
+    display: inline-block;
+
+    background: #e3f6ee;
+
+    color: #078354;
+
+    padding: 8px 13px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 44px;
+
+    line-height: 1.12;
+
+    color: #0b2945;
+
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #607585;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    max-width: 620px;
+}
+
+
+/* HERO GRAPHIC */
+
+.hero-graphic {
+    width: 230px;
+    height: 190px;
+
+    background: #ffffff;
+
+    border: 1px solid #d8e6e1;
+
+    border-radius: 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    box-shadow: 0 12px 30px rgba(16,47,75,0.07);
+}
+
+.hero-graphic::before {
+    content: "";
+
+    position: absolute;
+
+    width: 145px;
+    height: 145px;
+
+    border: 8px solid #0a9b63;
+
+    border-radius: 50%;
+
+    opacity: 0.12;
+}
+
+.hero-graphic img {
+    width: 135px;
+    height: 135px;
+
+    object-fit: contain;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* ================= WORKFLOW ================= */
+
+.workflow {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 25px;
+}
+
+.workflow-step {
+    flex: 1;
+
+    background: white;
+
+    border: 1px solid #d8e5e0;
+
+    border-radius: 11px;
+
+    padding: 14px;
+
+    text-align: center;
+
+    color: #687b88;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+.workflow-step.active {
+    background: #e7f8f1;
+
+    color: #08784e;
+
+    border-color: #a9dec8;
+}
+
+.arrow {
+    color: #9babb5;
+
+    font-weight: bold;
+}
+
+
+/* ================= GRID ================= */
+
+.grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px;
+}
+
+
+/* ================= CARD ================= */
+
+.card {
+    background: #ffffff;
+
+    border: 1px solid #d8e5e0;
+
+    border-radius: 17px;
+
+    padding: 25px;
+
+    box-shadow: 0 8px 28px rgba(16,47,75,0.05);
+}
+
+.card-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 20px;
+}
+
+.number {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 9px;
+
+    background: #0b2945;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+.card h2 {
+    font-size: 18px;
+
+    color: #17324d;
+}
+
+
+/* ================= UPLOAD ================= */
+
+.upload-area {
+    border: 2px dashed #b7cbc4;
+
+    border-radius: 15px;
+
+    min-height: 245px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    background: #fbfdfc;
+
+    transition: 0.2s;
+}
+
+.upload-area:hover {
+    border-color: #0a9b63;
+
+    background: #f6fbf9;
+}
+
+.upload-icon {
+    width: 62px;
+    height: 62px;
+
+    border-radius: 50%;
+
+    background: #e6f7ef;
+
+    color: #078354;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 28px;
+
+    margin-bottom: 14px;
+}
+
+.upload-area h3 {
+    font-size: 16px;
+
+    margin-bottom: 7px;
+}
+
+.upload-area p {
+    font-size: 12px;
+
+    color: #718391;
+
+    margin-bottom: 18px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.choose-btn {
+    background: #0b2945;
+
+    color: white;
+
+    padding: 11px 19px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.choose-btn:hover {
+    background: #0a9b63;
+}
+
+
+/* ================= PREVIEW ================= */
+
+#preview {
+    margin-top: 15px;
+
+    width: 100%;
+
+    max-height: 170px;
+
+    display: none;
+
+    border-radius: 10px;
+
+    object-fit: contain;
+
+    background: #f1f4f3;
+}
+
+
+/* ================= ANALYZE BUTTON ================= */
+
+.analyze-btn {
+    width: 100%;
+
+    margin-top: 15px;
+
+    background: #0a9b63;
+
+    color: white;
+
+    border: none;
+
+    padding: 14px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.analyze-btn:hover {
+    background: #08784e;
+
+    transform: translateY(-1px);
+}
+
+
+/* ================= INFORMATION ================= */
+
+.empty {
+    color: #758694;
+
+    font-size: 13px;
+
+    padding: 35px 5px;
+
+    text-align: center;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+
+    padding: 13px 10px;
+
+    border-bottom: 1px solid #edf1ef;
+
+    font-size: 13px;
+}
+
+th {
+    color: #758694;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+}
+
+.found {
+    color: #078354;
+
+    font-weight: bold;
+}
+
+
+/* ================= RESULT ================= */
+
+.result-card {
+    grid-column: 1 / -1;
+}
+
+.result-box {
+    padding: 25px;
+
+    border-radius: 13px;
+
+    border: 1px solid #b6e5d1;
+
+    background: #eaf8f2;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.result-left h3 {
+    color: #08784e;
+
+    margin-bottom: 7px;
+
+    font-size: 18px;
+}
+
+.result-left p {
+    color: #567367;
+
+    font-size: 12px;
+}
+
+.score {
+    font-size: 38px;
+
+    font-weight: 800;
+
+    color: #08784e;
+}
+
+
+/* ================= REPORT ================= */
+
+.report-box {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 18px;
+
+    border: 1px solid #dbe7e3;
+
+    border-radius: 12px;
+
+    background: #fbfdfc;
+}
+
+.report-box strong {
+    font-size: 14px;
+
+    color: #17324d;
+}
+
+.report-box p {
+    margin-top: 5px;
+
+    font-size: 12px;
+
+    color: #718391;
+}
+
+.report-btn {
+    background: #0b2945;
+
+    color: white;
+
+    border: none;
+
+    padding: 11px 17px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+.report-btn:hover {
+    background: #0a9b63;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    text-align: center;
+
+    padding: 30px;
+
+    color: #82909a;
+
+    font-size: 11px;
+
+    border-top: 1px solid #dce7e3;
+
+    margin-top: 15px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width: 800px) {
+
+    header {
+        padding: 0 20px;
+    }
+
+    .header-status {
+        display: none;
+    }
+
+    .hero {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .hero-graphic {
+        display: none;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-card {
+        grid-column: auto;
+    }
+
+    .workflow {
+        flex-wrap: wrap;
+    }
+
+    .arrow {
+        display: none;
+    }
+
+    .workflow-step {
+        min-width: 45%;
+    }
+
+    .report-box {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .report-btn {
+        width: 100%;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="brand">
+
+        <img
+            src="scanmet-logo.jpg"
+            alt="ScanMet Logo">
+
+        <div class="brand-name">
+            Scan<span>Met</span>
+        </div>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <div class="header-status">
+            ● SYSTEM READY
+        </div>
+
+
+        <!-- THREE DOT MENU -->
+
+        <div class="menu-container">
+
+            <button
+                class="menu-btn"
+                onclick="toggleMenu()">
+
+                ⋮
+
+            </button>
+
+
+            <div
+                class="dropdown"
+                id="menuDropdown">
+
+                <div class="dropdown-title">
+                    ScanMet
+                </div>
+
+
+                <a href="#report">
+                    • Report
+                </a>
+
+
+                <a href="#scan">
+                    • Scan Product
+                </a>
+
+
+                <a href="#compliance">
+                    • Compliance Check
+                </a>
+
+
+                <a href="#about">
+                    • About ScanMet
+                </a>
+
+
+                <div class="contact-item">
+
+                    <strong>Contact</strong><br>
+
+                    📞 7080××××××<br>
+
+                    📷 Instagram: scanmet.in<br>
+
+                    ✉ Email: scanmetquery@gmail.com
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="container">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <span class="tag">
+                PACKAGED COMMODITY COMPLIANCE
+            </span>
+
+
+            <h1>
+                Verify product labels.<br>
+                Check compliance.
+            </h1>
+
+
+            <p>
+                ScanMet helps identify important product declarations
+                and checks them against selected compliance requirements
+                through a simple scanning workflow.
+            </p>
+
+        </div>
+
+
+        <div class="hero-graphic">
+
+            <img
+                src="scanmet-logo.jpg"
+                alt="ScanMet">
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= WORKFLOW ================= -->
+
+    <div class="workflow">
+
+        <div class="workflow-step active">
+            01 &nbsp; Upload
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="workflow-step">
+            02 &nbsp; Extract
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="workflow-step">
+            03 &nbsp; Verify
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="workflow-step">
+            04 &nbsp; Result
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= GRID ================= -->
+
+    <div class="grid">
+
+
+        <!-- PRODUCT SCAN -->
+
+        <section
+            class="card"
+            id="scan">
+
+            <div class="card-title">
+
+                <div class="number">
+                    01
+                </div>
+
+                <h2>
+                    Product Scan
+                </h2>
+
+            </div>
+
+
+            <div class="upload-area">
+
+                <div class="upload-icon">
+                    ⌁
+                </div>
+
+
+                <h3>
+                    Upload product label
+                </h3>
+
+
+                <p>
+                    Use a clear image of the packaged commodity.
+                </p>
+
+
+                <label
+                    for="productImage"
+                    class="choose-btn">
+
+                    Choose Image
+
+                </label>
+
+
+                <input
+                    type="file"
+                    id="productImage"
+                    accept="image/*">
+
+
+                <img
+                    id="preview"
+                    alt="Product Preview">
+
+            </div>
+
+
+            <button
+                class="analyze-btn"
+                onclick="analyzeProduct()">
+
+                Analyze Product
+
+            </button>
+
+        </section>
+
+
+
+        <!-- ================= INFORMATION ================= -->
+
+        <section class="card">
+
+            <div class="card-title">
+
+                <div class="number">
+                    02
+                </div>
+
+                <h2>
+                    Extracted Information
+                </h2>
+
+            </div>
+
+
+            <div id="information">
+
+                <div class="empty">
+
+                    Upload a product image to extract
+                    important declarations.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= COMPLIANCE ================= -->
+
+        <section
+            class="card result-card"
+            id="compliance">
+
+            <div class="card-title">
+
+                <div class="number">
+                    03
+                </div>
+
+                <h2>
+                    Compliance Check
+                </h2>
+
+            </div>
+
+
+            <div id="complianceResult">
+
+                <div class="empty">
+
+                    Compliance result will appear here
+                    after analysis.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= REPORT ================= -->
+
+        <section
+            class="card result-card"
+            id="report">
+
+            <div class="card-title">
+
+                <div class="number">
+                    04
+                </div>
+
+                <h2>
+                    Compliance Report
+                </h2>
+
+            </div>
+
+
+            <div id="reportContent">
+
+                <div class="empty">
+
+                    Complete a product analysis to
+                    generate the report.
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="report-btn"
+                onclick="window.print()">
+
+                Print / Save Report as PDF
+
+            </button>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="about">
+
+    <strong>ScanMet</strong>
+    • Product Compliance Verification Prototype
+    <br><br>
+
+    Contact: 7080××××××
+    &nbsp; | &nbsp;
+    scanmetquery@gmail.com
+
+</footer>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+/* ================= THREE DOT MENU ================= */
+
+function toggleMenu() {
+
+    const menu =
+        document.getElementById("menuDropdown");
+
+    menu.classList.toggle("show");
+
+}
+
+
+/* CLOSE MENU WHEN CLICKING OUTSIDE */
+
+document.addEventListener("click", function(event) {
+
+    const container =
+        document.querySelector(".menu-container");
+
+    if (!container.contains(event.target)) {
+
+        document
+            .getElementById("menuDropdown")
+            .classList.remove("show");
+
+    }
+
+});
+
+
+
+/* ================= IMAGE PREVIEW ================= */
+
+document
+    .getElementById("productImage")
+    .addEventListener("change", function(event) {
+
+        const file =
+            event.target.files[0];
+
+        if (!file) {
+            return;
+        }
+
+        const preview =
+            document.getElementById("preview");
+
+        preview.src =
+            URL.createObjectURL(file);
+
+        preview.style.display = "block";
+
+    });
+
+
+
+/* ================= ANALYZE PRODUCT ================= */
+
+function analyzeProduct() {
+
+    const file =
+        document
+        .getElementById("productImage")
+        .files[0];
+
+
+    if (!file) {
+
+        alert(
+            "Please upload a product image first."
+        );
+
+        return;
+
+    }
+
+
+    /* DEMO EXTRACTION */
+
+    document
+        .getElementById("information")
+        .innerHTML = `
+
+        <table>
+
+            <tr>
+                <th>Parameter</th>
+                <th>Detected Value</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>MRP</td>
+                <td>₹120.00</td>
+                <td class="found">✓ Found</td>
+            </tr>
+
+            <tr>
+                <td>Net Quantity</td>
+                <td>200 g</td>
+                <td class="found">✓ Found</td>
+            </tr>
+
+            <tr>
+                <td>Manufacturer</td>
+                <td>ABC Foods Pvt. Ltd.</td>
+                <td class="found">✓ Found</td>
+            </tr>
+
+            <tr>
+                <td>Batch Number</td>
+                <td>B1245</td>
+                <td class="found">✓ Found</td>
+            </tr>
+
+            <tr>
+                <td>Date</td>
+                <td>12/04/2024</td>
+                <td class="found">✓ Found</td>
+            </tr>
+
+        </table>
+
+    `;
+
+
+    /* COMPLIANCE */
+
+    document
+        .getElementById("complianceResult")
+        .innerHTML = `
+
+        <div class="result-box">
+
+            <div class="result-left">
+
+                <h3>
+                    ✓ COMPLIANT
+                </h3>
+
+                <p>
+                    No issues detected in the
+                    selected prototype checks.
+                </p>
+
+            </div>
+
+
+            <div class="score">
+                100<span style="font-size:18px;">/100</span>
+            </div>
+
+        </div>
+
+    `;
+
+
+    /* REPORT */
+
+    document
+        .getElementById("reportContent")
+        .innerHTML = `
+
+        <div class="report-box">
+
+            <div>
+
+                <strong>
+                    ScanMet Compliance Report
+                </strong>
+
+                <p>
+                    Product analysis completed successfully.
+                    Required demo declarations were detected.
+                </p>
+
+            </div>
+
+            <div style="
+                color:#078354;
+                font-weight:bold;
+                font-size:12px;
+            ">
+                ✓ Analysis Complete
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+</script>
+
+
+</body>
+
+</html>
